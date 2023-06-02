@@ -40,7 +40,7 @@ export default function Comment({ post }) {
                 img: currentUser.photoURL
             })
             setComments(prev => prev ? [{comment: text, username: post.username, userId: currentUser.uid, postId: post.id, img: currentUser.photoURL, id: newDoc.id}, ...prev] : [{comment: text, username: post.username, userId: currentUser.uid, postId: post.id, img: currentUser.photoURL, id: newDoc.id}])
-            textRef.current.value = ''
+            setText('')
         }
 
         // Display comments on load
