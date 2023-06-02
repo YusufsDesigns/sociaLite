@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { db } from "../firebase"
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
 import PropTypes from 'prop-types';
@@ -13,8 +13,6 @@ export default function Comment({ post }) {
         const [comments, setComments] = useState()
         // User data
         const {currentUser} = useContext(AuthContext)
-        // Ref
-        const textRef = useRef(null)
         // Collection
         const commentRef = collection(db, "comments")
         // Context
@@ -53,7 +51,7 @@ export default function Comment({ post }) {
             <form onSubmit={createComment} className="flex items-center justify-between w-full p-5" >
                 <div className="flex items-start w-full">
                     <img className="w-12 h-12 rounded-full" src={currentUser.photoURL} alt="" />
-                    <textarea  value={text} onChange={(e) => {setText(e.target.value)}} className="w-full p-5 outline-none text-area" ref={textRef} placeholder="Post your reply!"></textarea>
+                    <textarea  value={text} onChange={(e) => {setText(e.target.value)}} className="w-full p-5 outline-none text-area" placeholder="Post your reply!"></textarea>
                 </div>
                 <input type='submit' value='Post' className={`px-5 py-2 text-white cursor-pointer bg-${theme.color} rounded-3xl`}/>
             </form>
