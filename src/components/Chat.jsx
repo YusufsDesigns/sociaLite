@@ -21,7 +21,7 @@ export default function Chat({ chatOpened, setChatOpened }) {
                     <BsArrowLeft className="absolute text-xl font-bold top-5 left-10" onClick={() => setChatOpened(false)} />
                     <div className="flex flex-col items-center justify-center chat-info">
                         <span className="text-xl font-semibold">{data.user?.displayName}</span>
-                        <Link to={`/${data.user?.displayName}`}>View Profile</Link>
+                        <Link to={`/profile/${data.user?.displayName}`}>View Profile</Link>
                     </div>
                     <Messages />
                     <Input />

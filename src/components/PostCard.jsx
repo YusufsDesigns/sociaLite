@@ -75,7 +75,6 @@ export default function PostCard({ post }) {
             console.log(error.message);
         }
     }
-
     // Image style
     let style = post.postImg.length === 1 ? "w-full" : "grid grid-cols-2 gap-2"
 
@@ -88,9 +87,11 @@ export default function PostCard({ post }) {
     }, [])
     return (
         <div className='flex items-start gap-5 post-card'>
-            <Link to={post.username}><img className="w-12 h-12 rounded-full" src={post.img} alt="" /></Link>
+            <Link to={`profile/${post.username}`}>
+                    <img className="w-12 h-12 rounded-full" src={post.img} alt="" />
+            </Link>
             <div className="w-full">
-                <Link to={post.username} className='text-sm italic font-semibold text-black'>@{post.username}</Link>
+                <Link to={`profile/${post.username}`} className='text-sm italic font-semibold text-black'>@{post.username}</Link>
                 <p className='mb-5 text-gray-700'>{post.post}</p>
                 <div className={style}>
                     <ImageGallery imgUrls={post.postImg} />

@@ -52,7 +52,7 @@ export const RootLayout = () => {
                                 <FiRadio className="icon" /> 
                                 <span>Channels</span>
                             </NavLink>
-                            <NavLink to={currentUser?.displayName}  className='flex items-center gap-3 text-2xl link'>
+                            <NavLink to={`profile/${currentUser?.displayName}`}  className='flex items-center gap-3 text-2xl link'>
                                 <FaRegUser className="icon" /> 
                                 <span>Profile</span>
                             </NavLink>
@@ -84,7 +84,7 @@ export const RootLayout = () => {
                                 <FiRadio className="icon" /> 
                                 <span>Channels</span>
                             </NavLink>
-                            <NavLink to={currentUser?.displayName}  className='flex items-center gap-3 text-xl link'>
+                            <NavLink to={`profile/${currentUser?.displayName}`}  className='flex items-center gap-3 text-xl link'>
                                 <FaRegUser className="icon" /> 
                                 <span>Profile</span>
                             </NavLink>

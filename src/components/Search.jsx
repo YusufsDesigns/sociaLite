@@ -26,7 +26,7 @@ export default function Search({ setChatOpened }) {
                 setUser(doc.data())
             })
         } catch (error) {
-            setErr(true)
+            console.log(error);
         }
     }
 

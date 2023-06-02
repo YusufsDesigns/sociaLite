@@ -15,6 +15,7 @@ import { AuthContext } from "./context/AuthContext"
 import MessageContainer from "./pages/MessageContainer";
 import ChatContextProvider from "./context/ChatContext";
 import NotFound from "./pages/NotFound";
+import Error from "./components/Error";
 
 function App() {
   const {currentUser} = useContext(AuthContext)
@@ -28,22 +29,23 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">
-        <Route element={<RootLayout />}>
+        <Route element={<RootLayout />} errorElement={<Error />}>
           <Route index element=
             {
               <ProtectedRoute>
                 <Home />
               </ProtectedRoute>
             } 
+            errorElement={<Error />}
           />
-          <Route path="status">
+          <Route path="status" errorElement={<Error />}>
             <Route path=':id' element={<PostDetails />} loader={PostDetailsLoader} />
           </Route>
           <Route path="channels" element={<Channels />} />
-          <Route path="/">
+          <Route path="/profile" errorElement={<Error />}>
             <Route path=":id" element={<Profile />} loader={ProfileLoader} />
           </Route>
-          <Route path="search">
+          <Route path="search" errorElement={<Error />}>
             <Route path=':id' element={<ChannelDetails />} loader={ChannelDetailsLoader} />
           </Route>
           <Route path="messages" element=
@@ -52,6 +54,7 @@ function App() {
                 <MessageContainer />
               </ChatContextProvider>
             } 
+            errorElement={<Error />}
           />
         </Route>
         <Route path="login" element={<Login />} />
