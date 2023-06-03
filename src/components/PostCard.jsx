@@ -7,6 +7,7 @@ import { db } from "../firebase";
 import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import userImg from "../assets/user-removebg-preview.png"
 
 
 export default function PostCard({ post }) {
@@ -78,6 +79,10 @@ export default function PostCard({ post }) {
     // Image style
     let style = post.postImg.length === 1 ? "w-full" : "grid grid-cols-2 gap-2"
 
+    const onImageError = (e) => {
+        e.target.src = userImg
+    }
+
     // Check if a user has liked a post already
     const hasUserLiked = likes?.find(like => like.userId === currentUser.uid)
     // Display the post on load
@@ -88,7 +93,11 @@ export default function PostCard({ post }) {
     return (
         <div className='flex items-start gap-5 post-card'>
             <Link to={`profile/${post.username}`}>
-                    <img className="w-12 h-12 rounded-full" src={post.img} alt="" />
+                    <img className="w-12 h-12 rounded-full" 
+                        src={post.img ? post.img : userImg}
+                        alt="cover image"
+                        onError={onImageError}
+                    />
             </Link>
             <div className="w-full">
                 <Link to={`profile/${post.username}`} className='text-sm italic font-semibold text-black'>@{post.username}</Link>

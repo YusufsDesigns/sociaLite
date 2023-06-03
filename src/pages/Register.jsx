@@ -85,7 +85,7 @@ export default function Register() {
                         <span>Add an avatar</span>
                     </label>
                     <button>Sign up</button>
-                    <span>{error && 'Something went wrong'}</span>
+                    <span className="text-red-700">{error && 'Password or email already in use'}</span>
                 </form>
                 <p>You do have an account? <Link to="/login">Login</Link></p>
             </div>
